@@ -1,16 +1,20 @@
 const rpsOptions = ["Rock", "Paper", "Scissors"];
 var cpuScore = 0;
 var playerScore = 0;
-
+let playerChose =  playerChoice();
 
 function getComputerChoice () {
     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
 }
 
-function playRound (playerSelection, computerSelection) {
-        let playerChoice = prompt("Rock, Paper, or Scissors?");
+function playerChoice() {
+    var selection = prompt("Rock, Paper, or Scissors?");
+    return selection
+}
+
+function playRound (playerSelection, computerSelection) { 
         computerSelection = getComputerChoice().toLowerCase();
-        playerSelection = playerChoice.toLowerCase();
+        playerSelection = playerChoice().toLowerCase();
     if (playerSelection == computerSelection) {
         return "It's a tie!";
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
@@ -25,24 +29,20 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-//create a function for tallying score
-//input the function in the for loop????
-
-function game(playerScore, cpuScore) {
-    for (let i = 0; i < 5; i++) {
+for (let i = 1; i < 5; i++) {
+function game() {
         playRound();
-    }
-        if (playerScore > cpuScore) {
+        if ( i === 5 && playerScore > cpuScore) {
                 return "Congrats! You won the game " + playerScore + " to " + cpuScore + " !!"
-            } else if (cpuScore > playerScore) {
+            } else if ( i === 5 && cpuScore > playerScore) {
                 return "Sorry...You lost the game " + cpuScore + " to " + playerScore + " !!"
         } else {
             return "The game is still in progress. Who will win???"
+        }
+            
 }
+    console.log(playRound());
+    console.log(cpuScore);
+    console.log(playerScore);
+    console.log(game());
 }
-
-
-console.log(playRound());
-console.log(playerScore);
-console.log(cpuScore);
-console.log(game());
