@@ -16,7 +16,7 @@ function playRound (playerSelection, computerSelection) {
         computerSelection = getComputerChoice().toLowerCase();
         playerSelection = playerChoice().toLowerCase();
     if (playerSelection == computerSelection) {
-        return "It's a tie!";
+        return "It's a tie!"; 
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
                (playerSelection === "paper" && computerSelection === "scissors") ||
                (playerSelection === "scissors" && computerSelection === "rock")  
@@ -29,7 +29,7 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-for (let i = 1; i < 5; i++) {
+for (let i = 0; i < 5; ++i) {
 function game() {
         playRound();
         if ( i === 5 && playerScore > cpuScore) {
@@ -38,8 +38,7 @@ function game() {
                 return "Sorry...You lost the game " + cpuScore + " to " + playerScore + " !!"
         } else {
             return "The game is still in progress. Who will win???"
-        }
-            
+        }   
 }
     console.log(playRound());
     console.log(cpuScore);
