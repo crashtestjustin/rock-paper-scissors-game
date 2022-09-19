@@ -7,14 +7,14 @@ function getComputerChoice () {
     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
 }
 
-function playerChoice() {
+function getPlayerChoice() {
     var selection = prompt("Rock, Paper, or Scissors?");
     return selection
 }
 
 function playRound () { 
         computerSelection = getComputerChoice().toLowerCase();
-        playerSelection = playerChoice().toLowerCase();
+        playerSelection = getPlayerChoice().toLowerCase();
     if (playerSelection == computerSelection) {
         return "This round is a tie!"; 
     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
@@ -30,7 +30,7 @@ function playRound () {
 }
 
 for (let i = 0; i < 5; i++) {
-function game() {
+function playCompleteGame() {
         playRound();  
 }
 function gameProgress() {
