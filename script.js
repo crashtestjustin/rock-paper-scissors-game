@@ -53,6 +53,6 @@ function finalScore() {
 } else if (playerScore > cpuScore) {
     return "Congrats! You won the game " + playerScore + " to " + cpuScore + "!!";
 } else {
-    return "Sorry...You lost the game " + cpuScore + " to " + playerScore + "!!";
+    return "Sorry...You lost the game " + cpuScore + " to " + playerScore + ".";
 }
 }
