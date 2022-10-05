@@ -1,7 +1,6 @@
 const rpsOptions = ["Rock", "Paper", "Scissors"];
 var cpuScore = 0;
 var playerScore = 0;
-//let playerChose =  playerChoice();
 
 function getComputerChoice () {
     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
