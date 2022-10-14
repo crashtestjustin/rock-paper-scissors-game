@@ -6,19 +6,19 @@ let computerPicks;
 let roundResult;
 
 const playerPicks = document.querySelectorAll('.rps-option');
+const playerScoreTally = document.querySelector('#player-score');
+const cpuScoreTally = document.querySelector('#computer-score');
 
 const displayPlayerChoice = document.querySelector('#result');
 const playerChoice = document.createElement('div');
 playerChoice.classList.add('display-results');
 displayPlayerChoice.append(playerChoice);
 
-const showPlayerChoice = document.querySelector('.display-results');
+const showRoundResults = document.querySelector('.display-results');
 const pChoiceText = document.createElement('p');
 const cpuChoiceText = document.createElement('p');
 const roundResultText = document.createElement('p');
-const playerScoreTally = document.createElement('p');
-const cpuScoreTally = document.createElement('p');
-showPlayerChoice.append(pChoiceText, cpuChoiceText, roundResultText, playerScoreTally, cpuScoreTally);
+showRoundResults.append(pChoiceText, cpuChoiceText, roundResultText);
 
 
 function getComputerChoice () {
@@ -31,12 +31,11 @@ playerPicks.forEach((pick) => {
         pPick = pick.id;
         computerPicks = getComputerChoice().toLowerCase();
         playRound();
-
+        playerScoreTally.innerHTML = playerScore;
+        cpuScoreTally.innerHTML = cpuScore;
         pChoiceText.textContent = "Player Chose: " + pPick;
         cpuChoiceText.textContent = "Computer Chose: " + computerPicks;
         roundResultText.textContent = "Result: " + roundResult;
-        playerScoreTally.textContent = "Your Score: " + playerScore;
-        cpuScoreTally.textContent = "Computer Score: " + cpuScore;
     });
 });
 
