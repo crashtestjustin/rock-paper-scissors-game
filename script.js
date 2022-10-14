@@ -10,9 +10,10 @@ const playerScoreTally = document.querySelector('#player-score');
 const cpuScoreTally = document.querySelector('#computer-score');
 
 const displayPlayerChoice = document.querySelector('#result');
+const scoresListed = document.querySelector('.scores');
 const playerChoice = document.createElement('div');
 playerChoice.classList.add('display-results');
-displayPlayerChoice.append(playerChoice);
+displayPlayerChoice.insertBefore(playerChoice, scoresListed);
 
 const showRoundResults = document.querySelector('.display-results');
 const pChoiceText = document.createElement('p');
