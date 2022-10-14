@@ -1,41 +1,46 @@
 const rpsOptions = ["Rock", "Paper", "Scissors"];
 var cpuScore = 0;
 var playerScore = 0;
+let pPick;
+let computerPicks;
+let roundResult;
 
 const playerPicks = document.querySelectorAll('.rps-option');
 playerPicks.forEach((pick) => {
-    pick.addEventListener('click', () => {
-        console.log(pick.id);
+    pick.addEventListener('click', e => {
+        pPick = pick.id;
+        computerPicks = getComputerChoice().toLowerCase();
+        console.log(pPick);
+        console.log(computerPicks);
+        playRound();
+        console.log("Computer Score: " + cpuScore);
+        console.log("Your Score: " + playerScore); 
+        console.log(roundResult);
     });
 });
 
+function getComputerChoice () {
+    return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
+}
 
-// function getComputerChoice () {
-//     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
-// }
+function playRound () { 
+    if (pPick == computerPicks) {
+        roundResult = "This round is a tie!"; 
+    } else if ((pPick === "rock" && computerPicks === "paper") ||
+               (pPick === "paper" && computerPicks === "scissors") ||
+               (pPick === "scissors" && computerPicks === "rock")  
+    ){
+        cpuScore++;
+        roundResult = "You lose this round! " + computerPicks + " beats " + pPick + "!";
+    } else {
+        playerScore++;
+        roundResult = "You won this round! " + pPick + " beats " + computerPicks + "!";
+    }
+}
 
-// function getPlayerChoice() {
-//     var selection = prompt("Rock, Paper, or Scissors?");
-//     return selection
-// }
 
-// function playRound () { 
-//         computerSelection = getComputerChoice().toLowerCase();
-//         playerSelection = "rock";
-//         //playerSelection = getPlayerChoice().toLowerCase();
-//     if (playerSelection == computerSelection) {
-//         return "This round is a tie!"; 
-//     } else if ((playerSelection === "rock" && computerSelection === "paper") ||
-//                (playerSelection === "paper" && computerSelection === "scissors") ||
-//                (playerSelection === "scissors" && computerSelection === "rock")  
-//     ){
-//         cpuScore++;
-//         return loss = "You lose this round! " + computerSelection + " beats " + playerSelection + "!";
-//     } else {
-//         playerScore++;
-//         return win = "You won this round! " + playerSelection + " beats " + computerSelection + "!";
-//     }
-// }
+
+
 
 //for (let i = 0; i < 5; i++) {
 // function playCompleteGame() {
@@ -48,10 +53,7 @@ playerPicks.forEach((pick) => {
 //         return finalScore();
 //     }
 // } 
-        // console.log(playRound());
-        // console.log("Computer Score: " + cpuScore);
-        // console.log("Your Score: " + playerScore);    
-        // //console.log(gameProgress());
+        
 //}
 
 
