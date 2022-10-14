@@ -6,22 +6,41 @@ let computerPicks;
 let roundResult;
 
 const playerPicks = document.querySelectorAll('.rps-option');
-playerPicks.forEach((pick) => {
-    pick.addEventListener('click', e => {
-        pPick = pick.id;
-        computerPicks = getComputerChoice().toLowerCase();
-        console.log(pPick);
-        console.log(computerPicks);
-        playRound();
-        console.log("Computer Score: " + cpuScore);
-        console.log("Your Score: " + playerScore); 
-        console.log(roundResult);
-    });
-});
+
+const displayPlayerChoice = document.querySelector('#result');
+const playerChoice = document.createElement('div');
+playerChoice.classList.add('display-results');
+displayPlayerChoice.append(playerChoice);
+
+const showPlayerChoice = document.querySelector('.display-results');
+const pChoiceText = document.createElement('p');
+const cpuChoiceText = document.createElement('p');
+const roundResultText = document.createElement('p');
+const playerScoreTally = document.createElement('p');
+const cpuScoreTally = document.createElement('p');
+showPlayerChoice.append(pChoiceText, cpuChoiceText, roundResultText, playerScoreTally, cpuScoreTally);
+
 
 function getComputerChoice () {
     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
 }
+
+
+playerPicks.forEach((pick) => {
+    pick.addEventListener('click', e => {
+        pPick = pick.id;
+        computerPicks = getComputerChoice().toLowerCase();
+        playRound();
+
+        pChoiceText.textContent = "Player Chose: " + pPick;
+        cpuChoiceText.textContent = "Computer Chose: " + computerPicks;
+        roundResultText.textContent = "Result: " + roundResult;
+        playerScoreTally.textContent = "Your Score: " + playerScore;
+        cpuScoreTally.textContent = "Computer Score: " + cpuScore;
+    });
+});
+
+
 
 function playRound () { 
     if (pPick == computerPicks) {
@@ -37,6 +56,7 @@ function playRound () {
         roundResult = "You won this round! " + pPick + " beats " + computerPicks + "!";
     }
 }
+
 
 
 
