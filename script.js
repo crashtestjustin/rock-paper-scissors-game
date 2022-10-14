@@ -2,7 +2,7 @@
 const rpsOptions = ["Rock", "Paper", "Scissors"];
 var cpuScore = 0;
 var playerScore = 0;
-var roundCounter = 1;
+var roundCounter = 0;
 let pPick;
 let computerPicks;
 let roundResult;
@@ -14,6 +14,7 @@ const playerScoreTally = document.querySelector('#player-score');
 const cpuScoreTally = document.querySelector('#computer-score');
 const pChoiceText = document.querySelector('#player-round-choice');
 const cpuChoiceText = document.querySelector('#computer-round-choice');
+const roundTracker = document.querySelector('#round-number');
 
 //creating a div within the #results-details div to hold the round results and 5 round game progress
 const displayPlayerChoice = document.querySelector('#result-details');
@@ -34,27 +35,28 @@ function getComputerChoice () {
 
 //Event listener on all .rps-option buttons as declared above - when clicked sets global variables pPick, computerPicks
 //to selections and runs playRound to compare and determine winner
-//Updates the innerHTML elements with scores and choices, rune trackProgress, and reveals the round result and game progress
+//Updates the innerHTML elements with scores and choices, runs trackProgress, and reveals the round result and game progress
     playerPicks.forEach((pick) => {
         pick.addEventListener('click', e => {
             pPick = pick.id;
             computerPicks = getComputerChoice().toLowerCase();
             playRound();
+            roundCounter++;
+            trackProgress();
             playerScoreTally.innerHTML = playerScore;
             cpuScoreTally.innerHTML = cpuScore;
             pChoiceText.innerHTML = pPick;
             cpuChoiceText.innerHTML = computerPicks;
             roundResultText.textContent = "Result: " + roundResult;
-            roundCounter++;
-            trackProgress();
             gameProgress.textContent = progress;
+            roundTracker.innerHTML = roundCounter;
         });
     });
 
 //run on each click - looks to see if te round counter is still within 5 rounds - if true the progress global variable is
 //  = string - else the progress global varable = finalScore
 function trackProgress() {
-    if (roundCounter < 6) {
+    if (roundCounter < 5) {
         progress = "The game is still in progress. Who will win???"
     } else {
         progress = finalScore();
