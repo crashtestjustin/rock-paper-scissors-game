@@ -41,7 +41,6 @@ playerPicks.forEach((pick) => {
 });
 
 
-
 function playRound () { 
     if (pPick == computerPicks) {
         roundResult = "This round is a tie!"; 
