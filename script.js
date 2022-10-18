@@ -7,6 +7,7 @@ let pPick;
 let computerPicks;
 let roundResult;
 let progress;
+let runRemove = 0;
 
 //selectors
 const playerPicks = document.querySelectorAll('.rps-option');
@@ -15,9 +16,10 @@ const cpuScoreTally = document.querySelector('#computer-score');
 const pChoiceText = document.querySelector('#player-round-choice');
 const cpuChoiceText = document.querySelector('#computer-round-choice');
 const roundTracker = document.querySelector('#round-number');
+const removeBr = document.getElementById('space-to-remove');
 
 //creating a div within the #results-details div to hold the round results and 5 round game progress
-const displayPlayerChoice = document.querySelector('#result-details');
+const displayPlayerChoice = document.querySelector('#result-from-single-round');
 const playerChoices = document.createElement('div');
 playerChoices.classList.add('display-results');
 displayPlayerChoice.append(playerChoices);
@@ -26,12 +28,31 @@ displayPlayerChoice.append(playerChoices);
 const showRoundResults = document.querySelector('.display-results');
 const roundResultText = document.createElement('p');
 const gameProgress = document.createElement('p');
-showRoundResults.append(roundResultText, gameProgress);
+// showRoundResults.append(roundResultText, gameProgress);
 
 //generating a random output from the array declared above
 function getComputerChoice () {
     return rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
 }
+
+//removing breaks from the space for game resutls (only once)
+function removeBreaks () {
+    for (i = 0; i < 2; i++) {
+    if (displayPlayerChoice.hasChildNodes()) {
+        displayPlayerChoice.removeChild(displayPlayerChoice.firstChild);
+    }
+    runRemove++;
+    }
+}
+
+function checkRemove () {
+    if (runRemove < 1) {
+        removeBreaks();
+    } else {
+        return
+    }
+}
+
 
 //Event listener on all .rps-option buttons as declared above - when clicked sets global variables pPick, computerPicks
 //to selections and runs playRound to compare and determine winner
@@ -39,10 +60,11 @@ function getComputerChoice () {
     playerPicks.forEach((pick) => {
         pick.addEventListener('click', e => {
             pPick = pick.id;
-            computerPicks = getComputerChoice().toLowerCase();
+            computerPicks = getComputerChoice();
             playRound();
             roundCounter++;
             trackProgress();
+            checkRemove();
             playerScoreTally.innerHTML = playerScore;
             cpuScoreTally.innerHTML = cpuScore;
             pChoiceText.innerHTML = pPick;
@@ -50,6 +72,7 @@ function getComputerChoice () {
             roundResultText.textContent = "Result: " + roundResult;
             gameProgress.textContent = progress;
             roundTracker.innerHTML = roundCounter;
+            showRoundResults.append(roundResultText, gameProgress);
         });
     });
 
@@ -67,9 +90,9 @@ function trackProgress() {
 function playRound () { 
     if (pPick == computerPicks) {
         roundResult = "This round is a tie!"; 
-    } else if ((pPick === "rock" && computerPicks === "paper") ||
-               (pPick === "paper" && computerPicks === "scissors") ||
-               (pPick === "scissors" && computerPicks === "rock")  
+    } else if ((pPick === "Rock" && computerPicks === "Paper") ||
+               (pPick === "Paper" && computerPicks === "Scissors") ||
+               (pPick === "Scissors" && computerPicks === "Rock")  
     ){
         cpuScore++;
         roundResult = "You lose this round! " + computerPicks + " beats " + pPick + "!";
