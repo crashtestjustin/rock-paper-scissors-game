@@ -3,18 +3,32 @@
     <head>
         <meta charset="utf-8">
         <title>RPS Game</title>
-        <link rel="stylesheet" src="/style.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Changa">
         <script src="/script.js" defer></script>
 </head>
 <body>
-    <button class="rps-option" id="rock">Rock</button>
-    <button class="rps-option" id="paper">Paper</button>
-    <button class="rps-option" id="scissors">Scissors</button>
-
+    <div class="title-section">
+        <h1 class="welcome-title">Welcome to Rock, Paper, Scissors</h1>
+        <h2 class="sub-title">A game of chance and luck! Will you beat the computer?</h2>
+    </div>
+    <div class="buttons">
+        <button class="rps-option rock-button" id="Rock">🪨</button>
+        <button class="rps-option paper-button" id="Paper">🧻</button>
+        <button class="rps-option scissors-button" id="Scissors">✂️</button>
+    </div>
     <div class="game-results" id="result">
-        <div id="result-details">
+        <div class="round-choices" id="result-details">
             <p class="single-round-choice">Player Chose: <span id="player-round-choice">Awaiting Selection</span></p>
-            <p class="single-round-choice">Computer Chose: <span id="computer-round-choice"></span></p>
+            <p class="single-round-choice">Computer Chose: <span id="computer-round-choice">Awaitng Player</span></p>
+        </div>
+        <div class="sinlge-round-result-space" id="result-from-single-round">
+            <div id="space-to-remove">
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
         </div>
         <div class="round-counter">
             <p>Round: <span id="round-number"></span></p>
