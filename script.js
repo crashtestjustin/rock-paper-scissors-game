@@ -3,6 +3,7 @@ const rpsOptions = ["Rock", "Paper", "Scissors"];
 var cpuScore = 0;
 var playerScore = 0;
 var roundCounter = 0;
+var roundsRemaining = 5;
 let pPick;
 let computerPicks;
 let roundResult;
@@ -16,18 +17,24 @@ const cpuScoreTally = document.querySelector('#computer-score');
 const pChoiceText = document.querySelector('#player-round-choice');
 const cpuChoiceText = document.querySelector('#computer-round-choice');
 const roundTracker = document.querySelector('#round-number');
+const roundsLeft = document.getElementById('rounds-left');
 const removeBr = document.getElementById('space-to-remove');
 
 //creating a div within the #results-details div to hold the round results and 5 round game progress
 const displayPlayerChoice = document.querySelector('#result-from-single-round');
 const playerChoices = document.createElement('div');
 playerChoices.classList.add('display-results');
+playerChoices.style.fontSize = "50px";
 displayPlayerChoice.append(playerChoices);
 
 //creating p elements within the div created above to house the round resuls and overall game progress
 const showRoundResults = document.querySelector('.display-results');
-const roundResultText = document.createElement('p');
-const gameProgress = document.createElement('p');
+const roundResultText = document.createElement('div');
+const gameProgress = document.createElement('div');
+roundResultText.style.fontWeight = "bold";
+roundResultText.style.margin = "8px";
+gameProgress.style.fontSize = "20px";
+gameProgress.style.margin = "5px";
 // showRoundResults.append(roundResultText, gameProgress);
 
 //generating a random output from the array declared above
@@ -63,15 +70,17 @@ function checkRemove () {
             computerPicks = getComputerChoice();
             playRound();
             roundCounter++;
+            roundsRemaining--;
             trackProgress();
             checkRemove();
             playerScoreTally.innerHTML = playerScore;
             cpuScoreTally.innerHTML = cpuScore;
             pChoiceText.innerHTML = pPick;
             cpuChoiceText.innerHTML = computerPicks;
-            roundResultText.textContent = "Result: " + roundResult;
+            roundResultText.textContent = roundResult;
             gameProgress.textContent = progress;
             roundTracker.innerHTML = roundCounter;
+            roundsLeft.innerHTML = roundsRemaining;
             showRoundResults.append(roundResultText, gameProgress);
         });
     });
