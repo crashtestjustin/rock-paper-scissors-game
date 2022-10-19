@@ -7,7 +7,7 @@ body {
 .title-section {
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 4%;
 }
 
 .welcome-title {
@@ -24,10 +24,11 @@ body {
 .buttons {
     display: flex;
     justify-content: center;
+    margin-bottom: 2%;
 }
 
 .rps-option {
-    font-size: 5rem;
+    font-size: 8rem;
     background: none;
     border: none;
     outline: none;
@@ -59,12 +60,52 @@ body {
     display: flex;
     justify-content: center;
     min-width: 550px;
-    margin: 30px 0px;
+    margin: 30px;
     border: 2px solid lightgrey;
     border-radius: 8px;
+    color: #404040;
 }
 
 .single-round-choice {
     margin: 20px;
     padding: 20px;
+    font-size: 40px;
+}
+
+.show-choice-span {
+    font-size: 35px;
+    color: #595959;
+}
+
+.space-to-remove {
+    margin: 0;
+}
+
+.live-counters {
+    margin: 30px 10px; 
+    padding: 30px;
+    font-size: 40px;
+    color: #404040;
+    display: flex;
+    justify-content: space-between;
+    gap: 200px;
+    border: 2px solid lightgrey;
+    border-radius: 8px;
+}
+
+#round-number,
+#rounds-left,
+#player-score,
+#computer-score {
+    color: #595959;
+    font-size: 35px;
+}
+
+.round-progress-counters {
+
+    /* border: 2px solid green; */
+}
+
+.scores {
+    /* border: 2px solid blue; */
 }
