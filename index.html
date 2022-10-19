@@ -19,28 +19,37 @@
     </div>
     <div class="game-results" id="result">
         <div class="round-choices" id="result-details">
-            <p class="single-round-choice">Player Chose: <span id="player-round-choice">Awaiting Selection</span></p>
-            <p class="single-round-choice">Computer Chose: <span id="computer-round-choice">Awaitng Player</span></p>
+            <p class="single-round-choice"><b>Player Chose:</b> <span class="show-choice-span" id="player-round-choice"><i>Awaiting Selection</i></span></p>
+            <p class="single-round-choice"><b>Computer Chose:</b> <span class="show-choice-span" id="computer-round-choice"><i>Awating Player</i></span></p>
         </div>
         <div class="sinlge-round-result-space" id="result-from-single-round">
-            <div id="space-to-remove">
+            <div class="space-to-remove" id="space-to-remove">
                 <br>
                 <br>
                 <br>
                 <br>
             </div>
         </div>
-        <div class="round-counter">
-            <p>Round: <span id="round-number"></span></p>
+    <div class="live-counters">
+        <div class="round-progress-counters">
+            <div class="round-counter">
+                Round: <span id="round-number"></span>
+            </div>
+            <div class="rounds-left">
+                Rounds Left: <span id="rounds-left">5</span>
+            </div>
         </div>
-        <div class="scores player-score">
-            <p>Player Score: <span id=player-score>0</span></p>
-        </div>
-        <div class="scores computer-score">
-            <p>Computer Score: <span id=computer-score>0</span></p>
+        <div class="scores">
+            <div class="player-score">
+                Player Score: <span id=player-score>0</span>
+            </div>
+            <div class="computer-score">
+                Computer Score: <span id=computer-score>0</span>
+            </div>
         </div>
     </div>
-
+    </div>
+    
     
 </body>
 </html>
