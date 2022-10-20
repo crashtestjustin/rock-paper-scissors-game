@@ -19,6 +19,14 @@ const cpuChoiceText = document.querySelector('#computer-round-choice');
 const roundTracker = document.querySelector('#round-number');
 const roundsLeft = document.getElementById('rounds-left');
 const removeBr = document.getElementById('space-to-remove');
+const modal = document.querySelector('.modal');
+const closeButton = document.querySelector('.close-button');
+const modalMessage = document.querySelector('.modal-message');
+const playAgain = document.querySelector('.play-again');
+
+closeButton.addEventListener('click', toggleModal);
+window.addEventListener("click", windowOnClick);
+
 
 //creating a div within the #results-details div to hold the round results and 5 round game progress
 const displayPlayerChoice = document.querySelector('#result-from-single-round');
@@ -82,6 +90,7 @@ function checkRemove () {
             roundTracker.innerHTML = roundCounter;
             roundsLeft.innerHTML = roundsRemaining;
             showRoundResults.append(roundResultText, gameProgress);
+            toggleModal();
         });
     });
 
@@ -123,6 +132,18 @@ function finalScore() {
 }
 }
 
+function toggleModal () {
+    if (roundCounter === 5) {
+    modal.classList.toggle('show-modal');
+    modalMessage.textContent = progress;
+} else {
+    return;
+}  
+}
 
-
+function windowOnClick(e) {
+    if (e.target === modal) {
+        toggleModal();
+    }
+}
 
